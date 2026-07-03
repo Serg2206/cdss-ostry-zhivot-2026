@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <pattern id="hex" x="0" y="0" width="40" height="69.28" patternUnits="userSpaceOnUse">
+      <polygon points="20,0 40,11.55 40,34.64 20,46.19 0,34.64 0,11.55" 
+        fill="none" stroke="#25303D" stroke-width="0.5" opacity="0.3"/>
+      <polygon points="20,46.19 40,57.74 40,80.83 20,92.38 0,80.83 0,57.74" 
+        fill="none" stroke="#25303D" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="url(#hex)"/>
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#25303D" stroke-width="0.3" opacity="0.15"/>
+  <circle cx="200" cy="200" r="100" fill="none" stroke="#25303D" stroke-width="0.3" opacity="0.2"/>
+  <line x1="0" y1="200" x2="400" y2="200" stroke="#25303D" stroke-width="0.3" opacity="0.15"/>
+  <line x1="200" y1="0" x2="200" y2="400" stroke="#25303D" stroke-width="0.3" opacity="0.15"/>
+</svg>
