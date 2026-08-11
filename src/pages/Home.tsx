@@ -29,11 +29,18 @@ function useReveal(threshold = 0.15) {
 
 /* ── qSOFA Calculator sub-component ── */
 function QSOFACalculator() {
-  const [checks, setChecks] = useState({ hr: false, bp: false, mentation: false });
+  const [checks, setChecks] = useState(() => {
+    const saved = localStorage.getItem('qsofa_checks');
+    return saved ? JSON.parse(saved) : { hr: false, bp: false, mentation: false };
+  });
   const score = (checks.hr ? 1 : 0) + (checks.bp ? 1 : 0) + (checks.mentation ? 1 : 0);
 
   const toggle = useCallback((key: keyof typeof checks) => {
-    setChecks((prev) => ({ ...prev, [key]: !prev[key] }));
+    setChecks((prev) => {
+      const updated = { ...prev, [key]: !prev[key] };
+      localStorage.setItem('qsofa_checks', JSON.stringify(updated));
+      return updated;
+    });
   }, []);
 
   const scoreColor = score >= 2 ? 'text-alert-red' : score >= 1 ? 'text-alert-orange' : 'text-success-green';
