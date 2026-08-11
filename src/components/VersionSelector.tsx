@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, ChevronDown } from 'lucide-react';
-import { getCurrentVersion, setCurrentVersion, GUIDE_VERSIONS, VERSION_NOTES } from '../lib/versions';
+import { getCurrentVersion, setCurrentVersion, GUIDE_VERSIONS, VERSION_NOTES, type GuideVersion } from '../lib/versions';
 
 export default function VersionSelector() {
   const [open, setOpen] = useState(false);
@@ -47,7 +47,7 @@ export default function VersionSelector() {
               </div>
 
               <div className="p-2 space-y-1">
-                {GUIDE_VERSIONS.map((version) => (
+                {GUIDE_VERSIONS.map((version: GuideVersion) => (
                   <button
                     key={version}
                     onClick={() => handleSelectVersion(version)}
@@ -66,7 +66,7 @@ export default function VersionSelector() {
                       )}
                     </div>
                     <div className="text-[11px] text-text-muted mt-1">
-                      {VERSION_NOTES[version as any]}
+                      {VERSION_NOTES[version]}
                     </div>
                   </button>
                 ))}

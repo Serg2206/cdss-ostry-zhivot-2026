@@ -11,7 +11,7 @@ import {
   TrendingUp, Info,
 } from 'lucide-react';
 import ProLock from '../components/ProLock';
-import { getCurrentVersion, getBiomarkerThresholds } from '../lib/versions';
+import { getBiomarkerThresholds } from '../lib/versions';
 
 // ─── Animation Constants ───
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
