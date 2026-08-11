@@ -8,3 +8,11 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </HashRouter>,
 )
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/cdss-ostry-zhivot-2026/sw.js')
+      .then(reg => console.log('SW registered:', reg))
+      .catch(err => console.log('SW registration failed:', err))
+  })
+}

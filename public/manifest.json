@@ -1,0 +1,62 @@
+{
+  "name": "CDSS Острый Живот 2026",
+  "short_name": "CDSS ОЖ",
+  "description": "Клиническая система поддержки решений для неотложной абдоминальной хирургии",
+  "start_url": "/cdss-ostry-zhivot-2026/",
+  "scope": "/cdss-ostry-zhivot-2026/",
+  "display": "standalone",
+  "background_color": "#0D1117",
+  "theme_color": "#14b8a6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%2314b8a6' width='192' height='192'/><text x='96' y='130' font-size='120' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'>CDSS</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%2314b8a6' width='192' height='192'/><text x='96' y='130' font-size='120' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'>CDSS</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["medical", "productivity"],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect fill='%230D1117' width='540' height='720'/><text x='270' y='360' font-size='60' fill='%2314b8a6' text-anchor='middle' font-family='sans-serif'>CDSS</text></svg>",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "qSOFA Калькулятор",
+      "short_name": "qSOFA",
+      "description": "Быстрый расчет риска сепсиса",
+      "url": "/cdss-ostry-zhivot-2026/?tab=qsofa",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%2314b8a6' width='96' height='96'/><text x='48' y='65' font-size='50' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'>q</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Справочник",
+      "short_name": "Справка",
+      "description": "Быстрый справочник и поиск",
+      "url": "/cdss-ostry-zhivot-2026/reference",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%2314b8a6' width='96' height='96'/><text x='48' y='65' font-size='50' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'>?</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}
