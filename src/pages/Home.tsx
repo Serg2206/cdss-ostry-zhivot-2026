@@ -11,7 +11,9 @@ import {
   FileText,
   Sparkles,
   ArrowRight,
+  Download,
 } from 'lucide-react';
+import { exportToPDF, exportToJSON } from '../lib/export';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
 
@@ -45,16 +47,33 @@ function QSOFACalculator() {
 
   const scoreColor = score >= 2 ? 'text-alert-red' : score >= 1 ? 'text-alert-orange' : 'text-success-green';
 
+  const handleExportPDF = () => exportToPDF('qsofa-calculator', 'qSOFA-результат');
+  const handleExportJSON = () => exportToJSON(
+    { score, checks, timestamp: new Date().toISOString() },
+    'qSOFA-результат'
+  );
+
   return (
-    <div className="rounded-lg border-l-[3px] border-alert-red bg-bg-secondary p-5 glow-red">
-      <div className="mb-4 flex items-center gap-2">
-        <Activity className="h-4 w-4 text-alert-red" />
-        <h4 className="font-heading text-lg font-semibold text-text-primary">
-          qSOFA Score
-        </h4>
-        <span className="rounded-full bg-alert-red/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-alert-red">
-          Live
-        </span>
+    <div className="rounded-lg border-l-[3px] border-alert-red bg-bg-secondary p-5 glow-red" id="qsofa-calculator">
+      <div className="mb-4 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Activity className="h-4 w-4 text-alert-red" />
+          <h4 className="font-heading text-lg font-semibold text-text-primary">
+            qSOFA Score
+          </h4>
+          <span className="rounded-full bg-alert-red/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-alert-red">
+            Live
+          </span>
+        </div>
+        <div className="flex gap-1">
+          <button
+            onClick={handleExportPDF}
+            className="text-[10px] px-2 py-1 rounded bg-teal-400/10 text-teal-400 hover:bg-teal-400/20 transition-colors"
+            title="Экспортировать в PDF"
+          >
+            <Download className="h-3 w-3" />
+          </button>
+        </div>
       </div>
 
       <div className="space-y-3 mb-4">
