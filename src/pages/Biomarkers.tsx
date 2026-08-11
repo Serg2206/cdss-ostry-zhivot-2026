@@ -11,6 +11,7 @@ import {
   TrendingUp, Info,
 } from 'lucide-react';
 import ProLock from '../components/ProLock';
+import { getCurrentVersion, getBiomarkerThresholds } from '../lib/versions';
 
 // ─── Animation Constants ───
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -40,20 +41,29 @@ type TabId = 'calculator' | 'thresholds' | 'signatures' | 'dynamics';
 interface BiomarkerInput {
   name: string;
   key: string;
-  ref: string;
-  critical: string;
   unit: string;
   inverse?: boolean;
   description: string;
 }
 
-const BIOMARKERS: BiomarkerInput[] = [
-  { name: 'D-лактат', key: 'dlactate', ref: '0.5–2.0', critical: '> 3.0', unit: 'mmol/L', description: 'Специфичный маркер ишемии кишечника' },
-  { name: 'I-FABP', key: 'ifabp', ref: '< 150', critical: '> 500', unit: 'pg/mL', description: 'Цитоплазматический белок энтероцитов' },
-  { name: 'PLA2-II', key: 'pla2', ref: '< 10', critical: '> 30', unit: 'U/mL', description: 'Фосфолипаза A2 группы II' },
-  { name: 'HLA-DR', key: 'hladr', ref: '> 60%', critical: '< 30%', unit: '%', inverse: true, description: 'Экспрессия HLA-DR на моноцитах' },
-  { name: 'PCT', key: 'pct', ref: '< 0.5', critical: '> 2.0', unit: 'ng/mL', description: 'Прокальцитонин' },
+const BIOMARKERS_BASE: BiomarkerInput[] = [
+  { name: 'D-лактат', key: 'dlactate', unit: 'mmol/L', description: 'Специфичный маркер ишемии кишечника' },
+  { name: 'I-FABP', key: 'ifabp', unit: 'pg/mL', description: 'Цитоплазматический белок энтероцитов' },
+  { name: 'PLA2-II', key: 'pla2', unit: 'U/mL', description: 'Фосфолипаза A2 группы II' },
+  { name: 'HLA-DR', key: 'hladr', unit: '%', inverse: true, description: 'Экспрессия HLA-DR на моноцитах' },
+  { name: 'PCT', key: 'pct', unit: 'ng/mL', description: 'Прокальцитонин' },
 ];
+
+function getBiomarkersWithThresholds() {
+  const thresholds = getBiomarkerThresholds();
+  return BIOMARKERS_BASE.map(bm => ({
+    ...bm,
+    ref: `${thresholds[bm.key as keyof typeof thresholds].normal}–${thresholds[bm.key as keyof typeof thresholds].moderate}`,
+    critical: `> ${thresholds[bm.key as keyof typeof thresholds].severe}`,
+  }));
+}
+
+const BIOMARKERS = getBiomarkersWithThresholds();
 
 // ─── Calculator Severity Logic ───
 type Severity = 'normal' | 'mild' | 'moderate' | 'severe';
@@ -75,14 +85,9 @@ function getSeverity(key: string, value: number, inverse?: boolean): Severity {
 }
 
 function getThresholds(key: string) {
-  const map: Record<string, { normal: number; moderate: number; severe: number }> = {
-    dlactate: { normal: 0.5, moderate: 2.0, severe: 3.0 },
-    ifabp: { normal: 150, moderate: 300, severe: 500 },
-    pla2: { normal: 10, moderate: 20, severe: 30 },
-    hladr: { normal: 60, moderate: 45, severe: 30 },
-    pct: { normal: 0.5, moderate: 2.0, severe: 10 },
-  };
-  return map[key] || { normal: 1, moderate: 2, severe: 3 };
+  const thresholds = getBiomarkerThresholds();
+  const t = thresholds[key as keyof typeof thresholds];
+  return t ? { normal: t.normal, moderate: t.moderate, severe: t.severe } : { normal: 1, moderate: 2, severe: 3 };
 }
 
 function severityColor(s: Severity): string {

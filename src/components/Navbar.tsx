@@ -10,6 +10,7 @@ import {
   Crown,
 } from 'lucide-react';
 import { useSubscription, isDemoActive } from '../hooks/useSubscription';
+import VersionSelector from './VersionSelector';
 
 const navLinks = [
   {
@@ -169,6 +170,11 @@ export default function Navbar() {
 
           {/* Right side */}
           <div className="flex items-center gap-2">
+            {/* Version selector */}
+            <div className="hidden sm:block">
+              <VersionSelector />
+            </div>
+
             {/* Search button */}
             <button
               onClick={() => setSearchOpen(true)}
