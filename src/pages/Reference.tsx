@@ -1,6 +1,6 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Search, ChevronRight, AlertTriangle, Activity, Beaker, FileText, Brain } from 'lucide-react';
+import { Search, ChevronRight, AlertTriangle } from 'lucide-react';
 import { Input } from '../components/ui/input';
 
 const easeOutExpo = [0.16, 1, 0.3, 1] as [number, number, number, number];

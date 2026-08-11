@@ -13,7 +13,7 @@ import {
   ArrowRight,
   Download,
 } from 'lucide-react';
-import { exportToPDF, exportToJSON } from '../lib/export';
+import { exportToPDF } from '../lib/export';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
 
@@ -38,7 +38,7 @@ function QSOFACalculator() {
   const score = (checks.hr ? 1 : 0) + (checks.bp ? 1 : 0) + (checks.mentation ? 1 : 0);
 
   const toggle = useCallback((key: keyof typeof checks) => {
-    setChecks((prev) => {
+    setChecks((prev: typeof checks) => {
       const updated = { ...prev, [key]: !prev[key] };
       localStorage.setItem('qsofa_checks', JSON.stringify(updated));
       return updated;
@@ -48,10 +48,6 @@ function QSOFACalculator() {
   const scoreColor = score >= 2 ? 'text-alert-red' : score >= 1 ? 'text-alert-orange' : 'text-success-green';
 
   const handleExportPDF = () => exportToPDF('qsofa-calculator', 'qSOFA-результат');
-  const handleExportJSON = () => exportToJSON(
-    { score, checks, timestamp: new Date().toISOString() },
-    'qSOFA-результат'
-  );
 
   return (
     <div className="rounded-lg border-l-[3px] border-alert-red bg-bg-secondary p-5 glow-red" id="qsofa-calculator">
