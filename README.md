@@ -10,7 +10,6 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?logo=tailwindcss&logoColor=white)
-![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
 🔗 **Live demo:** https://serg2206.github.io/cdss-ostry-zhivot-2026/
 
@@ -106,6 +105,7 @@ Copy `.env.example` to `.env` (optional):
 
 ```bash
 # Stripe Payment Link for the Pro tier (optional)
+# Placeholder — replace with your own Stripe Payment Link
 VITE_STRIPE_PAYMENT_LINK=https://buy.stripe.com/your-link
 ```
 
@@ -149,7 +149,7 @@ Clinical feedback, corrections of thresholds with references, and pull requests 
 
 ## 📄 License · Лицензия
 
-[MIT](LICENSE) © 2026 Sergiy V. Sushkov
+© 2026 Sergiy V. Sushkov. All rights reserved.
 
 ## 👨‍⚕️ Author · Автор
 
